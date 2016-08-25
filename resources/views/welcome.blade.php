@@ -8,7 +8,6 @@
 
 {{-- content of the page --}}
 @section('content')
-
     {{-- show if any error occures --}}
     @if(count($errors) > 0)
         <div class="row">
