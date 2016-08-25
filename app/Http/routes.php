@@ -38,6 +38,11 @@ Route::group(['middleware' => ['web']], function () {
         'as' => 'account'
     ]);
 
+    Route::post('/updateaccount', [
+        'uses' => 'UserController@postSavAccount',
+        'as' => 'account.save'
+    ]);
+
     Route::get('/dashboard', [
         'uses' => 'PostController@getDashboard',
         'as' => 'dashboard',
