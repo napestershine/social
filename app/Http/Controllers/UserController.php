@@ -12,7 +12,6 @@ class UserController extends Controller
 {
 
 
-
     public function postSignUp(Request $request)
     {
         $v = Validator::make($request->all(), [
@@ -63,5 +62,12 @@ class UserController extends Controller
         }
         return redirect()->back();
 
+    }
+
+    public function getLogout()
+    {
+        Auth::logout();
+
+        return redirect()->route('home');
     }
 }
