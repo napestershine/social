@@ -33,6 +33,11 @@ Route::group(['middleware' => ['web']], function () {
         'as' => 'logout'
     ]);
 
+    Route::get('/account', [
+        'uses' => 'UserController@getAccount',
+        'as' => 'account'
+    ]);
+
     Route::get('/dashboard', [
         'uses' => 'PostController@getDashboard',
         'as' => 'dashboard',
