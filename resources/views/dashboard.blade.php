@@ -41,7 +41,7 @@
 
                         @if(Auth::user() == $post->user)
 
-                            |   <a id="editpost" href="#">Edit</a> |
+                            |   <a class="edit" id="editpost" href="#">Edit</a> |
                             <a href="{{ route('post.delete', ['post_id' => $post->id]) }}">Delete</a>
 
                         @endif
