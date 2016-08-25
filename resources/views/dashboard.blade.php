@@ -1,5 +1,9 @@
 @extends('layouts.master')
 
+@section('title')
+    Dashboard
+@endsection
+
 @section('content')
 
     @include('includes.message-block')
@@ -33,12 +37,42 @@
                     </div>
                     <div class="interaction">
                         <a href="#">Like</a> |
-                        <a href="#">disike</a> |
-                        <a href="#">Edit</a> |
-                        <a href="{{ route('post.delete', ['post_id' => $post->id]) }}">Delete</a> |
+                        <a href="#">disike</a>
+
+                        @if(Auth::user() == $post->user)
+
+                            |   <a id="editpost" href="#">Edit</a> |
+                            <a href="{{ route('post.delete', ['post_id' => $post->id]) }}">Delete</a>
+
+                        @endif
                     </div>
                 </article>
             @endforeach
         </div>
     </section>
+
+    {{-- model box for deletion --}}
+    <div class="modal fade" tabindex="-1" role="dialog" id="edit-modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Edit Post</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="post-body">Edit the Post</label>
+                            <textarea name="post-body" class="form-control" id="post-body" rows="5"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 @endsection
