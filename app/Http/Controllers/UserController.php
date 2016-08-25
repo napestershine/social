@@ -6,26 +6,29 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
-    public function getDashboard()
-    {
-        return view('dashboard');
 
-    }
+
 
     public function postSignUp(Request $request)
     {
-        $email = $request['email'];
-        $first_name = $request['first_name'];
-        $password = bcrypt($request['password']);
-
-        $this->validate($request, [
+        $v = Validator::make($request->all(), [
             'email' => 'required|email|unique:users',
             'first_name' => 'required|max:120',
             'password' => 'required|min:4'
         ]);
+
+        if ($v->fails()) {
+            return redirect()->back()->withErrors($v);
+        }
+
+
+        $email = $request['email'];
+        $first_name = $request['first_name'];
+        $password = bcrypt($request['password']);
 
         $user = new User();
 
