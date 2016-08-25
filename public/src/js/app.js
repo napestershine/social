@@ -30,3 +30,5 @@ $('#modal-save').on('click', function () {
         $('#edit-modal').modal('hide');
     });
 });
+
+$('.like');

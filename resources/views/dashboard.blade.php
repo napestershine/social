@@ -36,8 +36,8 @@
                         Posted by {{ $post->user->first_name }} on {{ $post->created_at }}
                     </div>
                     <div class="interaction">
-                        <a href="#">Like</a> |
-                        <a href="#">disike</a>
+                        <a href="#" class="like">Like</a> |
+                        <a href="#" class="like">disike</a>
 
                         @if(Auth::user() == $post->user)
 
