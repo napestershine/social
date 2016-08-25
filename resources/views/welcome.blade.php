@@ -8,18 +8,7 @@
 
 {{-- content of the page --}}
 @section('content')
-    {{-- show if any error occures --}}
-    @if(count($errors) > 0)
-        <div class="row">
-            <div class="col-md-4 col-md-offset-4">
-                <ul>
-                    @foreach($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        </div>
-    @endif
+    @include('includes.message-block')
 
     {{-- User sign up and login form --}}
     <div class="row">
