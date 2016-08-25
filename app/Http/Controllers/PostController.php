@@ -12,7 +12,11 @@ class PostController extends Controller
 
     public function getDashboard()
     {
-        return view('dashboard');
+        $posts = Post::all();
+
+        return view('dashboard', [
+            'posts' => $posts
+        ]);
 
     }
 
