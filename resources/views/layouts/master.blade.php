@@ -21,6 +21,6 @@
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
 
-<link href="{{ URL::to('src/js/app.js') }}" type="text/css" rel="stylesheet">
+<script src="{{ URL::to('src/js/app.js') }}" type="text/javascript"></script>
 </body>
 </html>

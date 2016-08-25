@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-Dashboard
+    Dashboard
 @endsection
 
 @section('content')
@@ -41,7 +41,7 @@ Dashboard
 
                         @if(Auth::user() == $post->user)
 
-                            |   <a href="#">Edit</a> |
+                            |   <a id="editpost" href="#">Edit</a> |
                             <a href="{{ route('post.delete', ['post_id' => $post->id]) }}">Delete</a>
 
                         @endif
@@ -52,7 +52,7 @@ Dashboard
     </section>
 
     {{-- model box for deletion --}}
-    <div class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal fade" tabindex="-1" role="dialog" id="edit-modal">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -61,7 +61,12 @@ Dashboard
                     <h4 class="modal-title">Edit Post</h4>
                 </div>
                 <div class="modal-body">
-                    <p>One fine body&hellip;</p>
+                    <form>
+                        <div class="form-group">
+                            <label for="post-body">Edit the Post</label>
+                            <textarea name="post-body" class="form-control" id="post-body" rows="5"></textarea>
+                        </div>
+                    </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
