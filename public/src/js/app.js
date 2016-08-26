@@ -31,4 +31,23 @@ $('#modal-save').on('click', function () {
     });
 });
 
-$('.like');
+$('.like').on('click', function (event) {
+    event.preventDefault();
+
+    postId = event.target.parentNode.parentNode.dataset['postid'];
+
+    var isLIke = event.target.previousElementSibling == null;
+
+    $.ajax({
+        method: 'POST',
+        url: urlLike,
+        data: {isLike: isLIke, postId: postId, _token: token}
+    }).done(function () {
+        event.target.innerText = isLIke ? event.target.innerText == 'Like' ? 'You like this post' : 'Like' : event.target.innerText == 'Dislike' ? 'You don\'t like this post' : 'Dislike';
+        if (isLIke) {
+            event.target.nextElementSibling.innerText = 'Dislike';
+        } else {
+            event.target.previousElementSibling.innerText = 'Like';
+        }
+    });
+});
